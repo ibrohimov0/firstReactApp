@@ -9,9 +9,9 @@ export default function MenuScree() {
 
     const styles = createStyles(theme, colorScheme)
     const Container = Platform.OS === 'web' ? ScrollView : SafeAreaView;
-    const seperatorComp = <View style={styles.seperator}/>
+    const seperatorComp = <View style={styles.seperator} />
     // const headerComp = <Text>Top of List</Text>
-    const footerComp = <Text>End of Menu</Text>
+    const footerComp = <Text style={{color: theme.text}}>End of Menu</Text>
     return (
         <Container>
             <FlatList
@@ -27,9 +27,9 @@ export default function MenuScree() {
                     <View style={styles.row}>
                         <View style={styles.menuTextRow}>
                             <Text style={[styles.menuItemTitle, styles.menuItemText]}>{item.title}</Text>
-                            <Text  style={styles.menuItemText}>{item.description}</Text>
-                            <Image  style={styles.menuImage} source={MENU_IMAGES[item.id - 1]}/>
+                            <Text style={styles.menuItemText}>{item.description}</Text>
                         </View>
+                        <Image style={styles.menuImage} source={MENU_IMAGES[item.id - 1]} />
                     </View>
                 )}
             />
@@ -58,7 +58,7 @@ function createStyles(theme, colorSchema) {
         },
         row: {
             flexDirection: 'row',
-            width:"100%",
+            width: "100%",
             maxWidth: 600,
             height: 100,
             marginBottom: 10,
@@ -82,6 +82,10 @@ function createStyles(theme, colorSchema) {
         },
         menuItemText: {
             color: theme.text,
+        },
+        menuImage: {
+            width: 100,
+            height: 100
         }
     })
 }
